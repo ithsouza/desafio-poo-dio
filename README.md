@@ -1,152 +1,209 @@
-<h1> Desafio: Aprenda na Prática Programação Orientada a Objetos</h1>
+Desafio: Aprendendo na Prática o Paradigma de Orientação a Objetos (POO)
 
-<p align="center"> 📜 <a href="https://academiapme-my.sharepoint.com/:p:/g/personal/camila_cavalcante_dio_me/EaXyYOjBaFpZjkxhexMo5EcBKMEEAI5t5aHlsTjnBQJlUw?e=nxdB6C"> SLIDES APRESENTADO NO PROJETO </a> 📜 </P>
-<p> Sejam bem-vindos ao desafio: <strong>APRENDENDO NA PRÁTICA O PARADIGMA DE ORIENTAÇÃO A OBJETOS.</strong><br>Desafio este que tive a honra de co-criar com a plataforma de cursos online <strong><a href="https://web.digitalinnovation.one/">DIGITAL INNOVATION ONE</a></strong> 💛🧡 e disponibilizado de forma gratuita para a comunidade dos desenvolvedores Java.<br>
-    💎 O objetivo principal é colocar em prática umas das principais ferramentas da OO: <strong>ABSTRAÇÃO, ENCAPSULAMENTO, HERANÇA E POLIMORFISMO,</strong> através de um projeto Java. </p>
+Sejam bem-vindos ao desafio "Aprendendo na Prática o Paradigma de Orientação a Objetos", co-criado com a plataforma Digital Innovation One (DIO) e disponibilizado gratuitamente para a comunidade de desenvolvedores Java.
 
+O objetivo é colocar em prática os principais pilares da POO: Abstração, Encapsulamento, Herança e Polimorfismo através de um projeto Java.
 
+Pré-Requisitos
 
-<h2>🛑 Pré-Requisitos</h2>
+Conhecimento básico de Java
 
-<p>
-✅ Conhecer a sintaxe da Java<br>
-✅ Java JDK 11<br>
-✅ IDE para desenvolvimento Java (usarei IntelliJ)<br>
-✅ Git<br>
-✅ Conta no GitHub<br>
-</p>
+Java JDK 11
 
+IDE para desenvolvimento Java (ex.: IntelliJ)
 
-<h2> 👣 Passo-a-Passo</h2>
+Git
 
-<p>
-<strong>	1.</strong> Vamos ABSTRAIR o DOMÍNIO Bootcamp e MODELAR seus ATRIBUTOS E MÉTODOS <br>
-<strong>	2.</strong> Criaremos as CLASSES: Bootcamp, Cursos, Mentorias e Devs e vamos relaciona-las <br>
-<strong>	3.</strong> As CLASSES Curso, Mentoria e Devs também serão MODELADOS, ou seja, criaremos seus ATRIBUTOS E MÉTODOS <br> 
-<strong>	4.</strong> Para que o código fique mais legível e de fácil manutenção, iremos utilizar de algumas das ferramentas que o PARADIGMA DE ORIENTAÇÃO A OBJETOS (POO) nos oferece: ABSTRAÇÃO, ENCAPSULAMENTO, HERANÇA E POLIMORFISMO <br>
-<strong>	5.</strong> E para representar CLASSES que foram criadas e relacionadas, iremos transforma-las em OBJETOS<br>
-</p>
+Conta no GitHub
 
-----
+Passo a Passo do Desafio
 
-<h2> 📚 Paradigma de Programação Orientado a Objetos (POO) </h2>
+Abstrair o domínio Bootcamp e modelar seus atributos e métodos.
 
-<p>
-A visão de Orientação a Objetos (OO) é aquela de um mundo de objetos que interagem.<br>
-Este paradigma é um modelo de análise, projeto e programação baseado na aproximação entre o mundo real e o mundo virtual, através da criação e interação entre classes, atributos, métodos, objetos, entre outros.<br>
-São 4 os pilares principais do POO: ABSTRAÇÃO, ENCAPSULAMENTO, HERANÇA E POLIMORFISMO. 
-</p>
+Criar as classes: Bootcamp, Curso, Mentoria e Dev e relacioná-las.
 
+Modelar também as classes Curso, Mentoria e Dev com seus atributos e métodos.
 
-<h3>🔺 ABSTRAÇÃO:</h3>
+Aplicar os pilares do Paradigma Orientado a Objetos: Abstração, Encapsulamento, Herança e Polimorfismo.
 
-<p>
-Habilidade de concentrar-se nos aspectos essenciais de um domínio, ignorando características menos importantes ou acidentais. Nesse contexto, objetos são abstrações de entidades existentes no domínio em questão.</p>
+Transformar as classes em objetos para representar o domínio do projeto.
 
-<h3>🔺 ENCAPSULAMENTO:</h3>
+Diagrama de Classes (Mermaid)
+classDiagram
+    class Bootcamp {
+        - String nome
+        - String descricao
+        - Set~Curso~ cursos
+        - Set~Mentoria~ mentorias
+    }
 
-<p> Encapsular significa esconder a implementação dos objetos. O encapsulamento favorece principalmente dois aspectos de um sistema: a manutenção e a evolução.</p>
+    class Curso {
+        - String titulo
+        - String descricao
+        - int cargaHoraria
+        + calcularXp()
+    }
 
-<h3>🔺 HERANÇA:</h3>
+    class Mentoria {
+        - String titulo
+        - String descricao
+        - LocalDate data
+    }
 
-<p>Permite que você defina uma classe filha que reutiliza (herda), estende ou modifica o comportamento de uma classe pai. A classe cujos membros são herdados é chamada de classe base. A classe que herda os membros da classe base é chamada de classe derivada.</p>
+    class Dev {
+        - String nome
+        - Set~Curso~ cursosInscritos
+        - Set~Mentoria~ mentoriasInscritas
+        + inscreverBootcamp(Bootcamp bootcamp)
+        + progredir()
+        + calcularTotalXp()
+    }
 
-<h3> 🔺 POLIMORFISMO:</h3>
+    Bootcamp "1" --> "*" Curso : possui
+    Bootcamp "1" --> "*" Mentoria : possui
+    Dev "*" --> "*" Curso : inscrito
+    Dev "*" --> "*" Mentoria : inscrito
 
-<p>Capacidade de um objeto poder ser referenciado de várias formas. Cuidado, polimorfismo não quer dizer que o objeto fica se transformando, muito pelo contrário, um objeto nasce de um tipo e morre daquele tipo, o que pode mudar é a maneira como nos referimos a ele. A capacidade de tratar objetos criados a partir das classes específicas como objetos de uma classe genérica é chamada de polimorfismo.</p>
-<br>
-<h2 align="center"> ‼️ CONCEITOS FUNDAMENTAIS POO ‼️ </h2>
-<p>
-<h3>🔻 DOMÍNIO:</h3> 
-Domínio da aplicação, também conhecida como camada de negócio ou de objetos de negócio, é aquela onde estão localizadas as classes que fazem parte do domínio do problema, ou seja, classes correspondentes a objetos que fazem parte da descrição do problema.
+Conceitos de POO
+<details> <summary>Clique para expandir</summary>
 
-<h3>🔻 CLASSE: </h3> 
-Um elemento do código que tem a função de representar objetos do mundo real. Dentro dela é comum declararmos atributos e métodos, que representam, respectivamente, as características e comportamentos desse objeto.
+Abstração: focar nos aspectos essenciais do domínio.
 
-<h3>🔻 ATRIBUTO: </h3>
-Atributos são, basicamente, a estrutura de dados que vai representar a classe. Os atributos também são conhecidos como VARIÁVEL DE CLASSE, e podem ser divididos em dois tipos básicos: atributos de instância e de classe. 
+Encapsulamento: esconder detalhes internos do objeto.
 
-<h3>🔻 VARIÁVEL: </h3>
-Uma “região de memória (do computador) previamente identificada cuja finalidade é armazenar os dados ou informações de um programa por um determinado espaço de tempo”.
+Herança: permitir que classes filhas reutilizem e estendam comportamentos de classes pai.
 
-<h3>🔻 MÉTODO: </h3>
-Os métodos representam os estados e ações dos objetos e classes.
+Polimorfismo: tratar objetos de classes específicas como instâncias de uma classe genérica.
 
-<h3>🔻 OBJETO: </h3>
-Em POO, objeto é um "molde" de uma determinada classe, que passa a existir a partir de uma instância da classe. A classe define o comportamento do objeto, usando atributos (propriedades) e métodos (ações).
-Objeto em ciência da computação, é uma referência a um local da memória que possui um valor. Um objeto pode ser uma variável, função, ou estrutura de dados. 
+Domínio: camada que contém classes do problema.
 
-<h3>🔻 INSTÂNCIA: </h3>
-Uma instância de uma classe é um novo objeto criado dessa classe, com o operador new. Instanciar uma classe é criar um novo objeto do mesmo tipo dessa classe. Uma classe somente poderá ser utilizada após ser instanciada.
+Classe: representa objetos do mundo real com atributos e métodos.
 
-</p>
-    
-------------
-<br>
+Atributo: estrutura de dados que representa a classe.
 
-<h2> 🧮 Linguagem de Programação vs Paradigma de Linguagem de Programação</h2>
+Método: define ações/comportamentos de objetos.
 
-<p>
-<h3> ✨ LINGUAGEM DE PROGRAMAÇÃO:</h3> 
-É uma linguagem formal que, através de uma série de instruções, permite que um programador escreva um conjunto de ordens, ações consecutivas, dados e algoritmos para criar programas que controlam o comportamento físico e lógico de uma máquina.<br>
-Seguem alguns exemplos de como as linguagens de programação podem ser classificadas:<br>
-<br>
-🔺 Nível de abstração:<br>
-Baixo Nível: Assembly<br>
-Médio Nível: C, C++, D, Objective C, etc.<br>
-Alto Nível: Java, C#, PHP, Javascript, etc.<br>
-Altíssimo Nível: Python, Ruby, Elixir, etc.<br>
-<br>
-🔺 Paradigma de programação:<br>
-Programação Estruturada: C, Pascal, Ada, etc.<br>
-Programação Orientada a Objetos: Java, C#, C++, Objective C, D, etc.<br>
-Programação Funcional: Lisp, Scheme, Erlang, Elixir, etc.<br>
-<br>
-🔺 Linguagens classificadas pela arquitetura da aplicação:<br>
-Desktop: C, C++, Object Pascal, Java, etc.<br>
-Web: PHP, Ruby, Javascript, Java, etc.<br>
-<br>
-🔺 Tipo de execução:<br>
-Linguagens compiladas: C, C++, Pascal, D, GO, etc.<br>
-Linguagens Interpretadas: Python, Ruby, PHP, Javascript, etc.<br>
-Linguagens Hibridas: Java, Erlang, Elixir, etc.<br>
+Objeto: instância de uma classe criada com new.
 
+</details>
+Exemplos de Classes Java
+<details> <summary>Clique para expandir</summary>
+public class Curso {
+    private String titulo;
+    private String descricao;
+    private int cargaHoraria;
 
-<h3> ✨ PARADIGMA DE LINGUAGEM DE PROGRAMAÇÃO</h3> 
+    public void calcularXp() {
+        // lógica para calcular XP
+    }
 
-É um conjunto de características que podem ser utilizados para categorizar determinado grupo de linguagens. Um paradigma pode oferecer técnicas apropriadas para uma aplicação específica.<br>
-<br>
-<strong>PARADIGMAS PRINCIPAIS e SEUS SUBPARADIGMAS</strong><br>
+    // getters e setters
+}
 
-🔸 <strong>1. Paradigma Imperativo</strong><br>
-Neste paradigma, o programa descreve o processamento necessário para solucionar o problema. Assim, o paradigma imperativo é caracterizado por execução sequencial de instruções, pelo uso de variáveis que representam posições de memória e pelo uso de instruções de atribuição que alteram os valores dessas variáveis.<br>
-Vejamos alguns Subparadigmas do Paradigma Imperativo e exemplos linguagens de programação que adotam esses subparadigmas.<br>
-<br>
-🔸  1.1 Paradigma estruturado:  ALGOL 58 e ALGOL 60 <br>
-🔸  1.2 Paradigma concorrente: Java e Ada<br>
-🔸  1.3 Paradigma Orientado a Objetos: Smalltalk e Java<br>
-<br>
-🔹 <strong>2. Paradigma Declarativo</strong><br>
-Este paradigma é o modelo no qual os resultados são descritos, mas os passos para chegar aos resultados não são estabelecidos.<br>
-Vejamos alguns Subparadigmas do Paradigma Declarativo e exemplos linguagens de programação que adotam esses subparadigmas:<br>
-<br>
-🔹 2.1 Paradigma Funcional: Lisp e Haskell<br>
-🔹 2.2 Paradigma Lógico: Prolog<br>
-</p>
+public class Mentoria {
+    private String titulo;
+    private String descricao;
+    private LocalDate data;
 
-<h2> 🤝 Contribuindo </h2>
+    // getters e setters
+}
 
-<p>
-Este repositório foi criado para fins de estudo, então contribua com ele.<br>
-Se te ajudei de alguma forma, ficarei feliz em saber. E caso você conheça alguém que se identidique com o conteúdo, não deixe de compatilhar.<br>
-<br>
-Se possível:<br>
-⭐️  Star o projeto<br>
-🐛 Encontrar e relatar issues<br>
-</p>
+public class Dev {
+    private String nome;
+    private Set<Curso> cursosInscritos = new HashSet<>();
+    private Set<Mentoria> mentoriasInscritas = new HashSet<>();
 
+    public void inscreverBootcamp(Bootcamp bootcamp) {
+        // adiciona cursos e mentorias do bootcamp ao dev
+    }
 
+    public void progredir() {
+        // remove curso ou mentoria concluída
+    }
 
-------------
+    public double calcularTotalXp() {
+        return 0;
+    }
 
-Disponibilizado com ♥ por [cami-la](https://www.linkedin.com/in/cami-la/ "cami-la").
+    // getters e setters
+}
+
+</details>
+Exemplo de Objetos no main()
+<details> <summary>Clique para expandir</summary>
+import java.time.LocalDate;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Curso curso1 = new Curso();
+        curso1.setTitulo("Java Básico");
+        curso1.setDescricao("Aprenda fundamentos de Java");
+        curso1.setCargaHoraria(8);
+
+        Curso curso2 = new Curso();
+        curso2.setTitulo("POO em Java");
+        curso2.setDescricao("Aprenda POO com Java");
+        curso2.setCargaHoraria(10);
+
+        Mentoria mentoria1 = new Mentoria();
+        mentoria1.setTitulo("Mentoria Java");
+        mentoria1.setDescricao("Esclareça dúvidas com mentor");
+        mentoria1.setData(LocalDate.now());
+
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Treinamento intensivo de Java");
+        bootcamp.getCursos().add(curso1);
+        bootcamp.getCursos().add(curso2);
+        bootcamp.getMentorias().add(mentoria1);
+
+        Dev devThiago = new Dev();
+        devThiago.setNome("Thiago");
+        devThiago.inscreverBootcamp(bootcamp);
+
+        System.out.println("Cursos inscritos Thiago: " + devThiago.getCursosInscritos());
+        System.out.println("Mentorias inscritas Thiago: " + devThiago.getMentoriasInscritas());
+
+        devThiago.progredir();
+        System.out.println("XP total de Thiago: " + devThiago.calcularTotalXp());
+    }
+}
+\\
+
+</details>
+Linguagem de Programação vs Paradigma
+<details> <summary>Clique para expandir</summary>
+
+Níveis de Linguagem:
+
+Baixo Nível: Assembly
+
+Médio Nível: C, C++, D
+
+Alto Nível: Java, C#, PHP, JavaScript
+
+Altíssimo Nível: Python, Ruby, Elixir
+
+Paradigmas de Programação:
+
+Imperativo: C, Pascal, Ada
+
+Orientado a Objetos: Java, C#, C++
+
+Funcional: Lisp, Haskell
+
+Declarativo/Lógico: Prolog
+
+Tipo de Execução:
+
+Compiladas: C, C++, Pascal
+
+Interpretadas: Python, Ruby, PHP
+
+Híbridas: Java, Erlang, Elixir
+
+</details>
+Contribuindo
+
+Este repositório foi criado para estudo e prática.
